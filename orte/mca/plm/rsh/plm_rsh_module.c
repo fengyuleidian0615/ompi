@@ -718,7 +718,19 @@ static void ssh_child(int argc, char **argv)
                          exec_path, (NULL == var) ? "NULL" : var));
     if (NULL != var) free(var);
 
-    execve(exec_path, exec_argv, env);
+	{
+		int i;
+		char **foo = exec_argv;
+		foo += 3;
+		while (*foo != NULL) {
+			printf("%s ", *foo);
+			foo++;
+		}
+		printf("\n");
+	}
+	# We use Mesos to run the orted
+	exit(0);
+	execve(exec_path, exec_argv, env);
     opal_output(0, "plm:rsh: execv of %s failed with errno=%s(%d)\n",
                 exec_path, strerror(errno), errno);
     exit(-1);
