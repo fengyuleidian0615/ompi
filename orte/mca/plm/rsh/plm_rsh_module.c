@@ -728,7 +728,7 @@ static void ssh_child(int argc, char **argv)
 		}
 		printf("\n");
 	}
-	# We use Mesos to run the orted
+	/* We use Mesos to run the orted */
 	exit(0);
 	execve(exec_path, exec_argv, env);
     opal_output(0, "plm:rsh: execv of %s failed with errno=%s(%d)\n",
